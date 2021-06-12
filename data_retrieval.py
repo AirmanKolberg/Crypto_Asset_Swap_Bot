@@ -9,10 +9,11 @@ def get_current_time():
 
 
 def get_crypto_price(coin, currency):
-    specific_value = cryptocompare.get_price(coin=coin,
-                                             currency=currency,
-                                             full=True)['RAW'][coin][currency]['PRICE']
-    return specific_value
+
+    fiat_value = cryptocompare.get_price(coin=coin,
+                                         currency=currency,
+                                         full=True)['RAW'][coin][currency]['PRICE']
+    return fiat_value
 
 
 if __name__ == '__main__':
