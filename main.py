@@ -84,7 +84,4 @@ def run_the_bot():
 
 if __name__ == '__main__':
 
-    try:
-        run_the_bot()
-    except Exception:
-        run_the_bot()
+    run_the_bot()
