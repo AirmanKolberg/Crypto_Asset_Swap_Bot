@@ -2,6 +2,7 @@ from secrets import *
 from data_retrieval import get_current_time, get_crypto_price
 from time import sleep
 from system_commands import clear_screen
+from twilio import *
 
 
 # This function is called from within check_for_updates()
@@ -34,9 +35,21 @@ if __name__ == '__main__':
 
     clear_screen()
 
-    potential_rewards, time_now = check_for_update(sell_coin, buy_coin,
-                                                   sell_amount)
-    print(f"Potential rewards at {time_now}  -  {potential_rewards}")
+    waiting_for_opportunity = True
+    while waiting_for_opportunity:
 
-    if potential_rewards >= coin_rewards:
+        # Crunch all of the numbers
+        potential_rewards, time_now = check_for_update(sell_coin, buy_coin,
+                                                       sell_amount)
 
+        # Display the current progress on the screen
+        print(f"Potential rewards at {time_now}  -  {potential_rewards}")
+
+        # If the price is right, notify me
+        if potential_rewards >= coin_rewards:
+            text_me(f"Hello, there!\nPotential coin trade of {potential_rewards} right now!")
+            call_me()
+            waiting_for_opportunity = False
+
+        # Wait a minute and try again
+        sleep(60)
