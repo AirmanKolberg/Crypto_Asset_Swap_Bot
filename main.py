@@ -34,47 +34,57 @@ def check_for_update(sell_coin, buy_coin, sell_amount):
     return new_assets, time_now
 
 
+def run_the_bot():
+    try:
+        clear_screen()
+
+        waiting_for_opportunity = True
+        while waiting_for_opportunity:
+
+            # Crunch all of the numbers
+            potential_rewards, time_now = check_for_update(sell_coin, buy_coin,
+                                                           sell_amount)
+
+            # Display the current progress on the screen
+            print(f"{time_now}  -  {potential_rewards}")
+
+            # If the price is right, notify me
+            if potential_rewards >= coin_rewards:
+                # text_me(f"Hello, there!\nPotential coin trade of {potential_rewards} right now!")
+                # call_me()
+
+                """
+                This will serve as a test until I can get Twilio
+                back up and running again...
+                """
+
+                # Open the Messages app
+                bash_command("open -a 'Messages'")
+                sleep(5)
+
+                # Type a message to me (from myself, if not using Twilio)
+                pag.write(f"Potential coin trade of {potential_rewards} right now!",
+                          interval=0.8)
+                sleep(0.2)
+
+                # Send the message
+                pag.press('return')
+                sleep(0.2)
+
+                # Close the Messages application
+                pag.hotkey('command', 'q')
+
+                waiting_for_opportunity = False
+
+            # Wait a minute and try again
+            sleep(60)
+    except Exception:
+        run_the_bot()
+
+
 if __name__ == '__main__':
 
-    clear_screen()
-
-    waiting_for_opportunity = True
-    while waiting_for_opportunity:
-
-        # Crunch all of the numbers
-        potential_rewards, time_now = check_for_update(sell_coin, buy_coin,
-                                                       sell_amount)
-
-        # Display the current progress on the screen
-        print(f"{time_now}  -  {potential_rewards}")
-
-        # If the price is right, notify me
-        if potential_rewards >= coin_rewards:
-            # text_me(f"Hello, there!\nPotential coin trade of {potential_rewards} right now!")
-            # call_me()
-
-            """
-            This will serve as a test until I can get Twilio
-            back up and running again...
-            """
-
-            # Open the Messages app
-            bash_command("open -a 'Messages'")
-            sleep(5)
-
-            # Type a message to me (from myself, if not using Twilio)
-            pag.write(f"Potential coin trade of {potential_rewards} right now!",
-                      interval=0.8)
-            sleep(0.2)
-
-            # Send the message
-            pag.press('return')
-            sleep(0.2)
-
-            # Close the Messages application
-            pag.hotkey('command', 'q')
-
-            waiting_for_opportunity = False
-
-        # Wait a minute and try again
-        sleep(60)
+    try:
+        run_the_bot()
+    except Exception:
+        run_the_bot()
