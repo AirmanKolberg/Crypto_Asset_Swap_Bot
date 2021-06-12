@@ -58,16 +58,20 @@ if __name__ == '__main__':
             back up and running again...
             """
 
+            # Open the Messages app
             bash_command("open -a 'Messages'")
             sleep(5)
 
+            # Type a message to me (from myself, if not using Twilio)
             pag.write(f"Potential coin trade of {potential_rewards} right now!",
                       interval=0.8)
             sleep(0.2)
 
+            # Send the message
             pag.press('return')
             sleep(0.2)
 
+            # Close the Messages application
             pag.hotkey('command', 'q')
 
             waiting_for_opportunity = False
