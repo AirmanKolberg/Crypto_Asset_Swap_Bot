@@ -23,8 +23,10 @@ def compare_values(sell_coin_price, buy_coin_price,
 def check_for_update(sell_coin, buy_coin, sell_amount):
 
     time_now = get_current_time()
-    sell_coin_price = get_crypto_price(sell_coin)
-    buy_coin_price = get_crypto_price(buy_coin)
+
+    # Insert the currency of your choice
+    sell_coin_price = get_crypto_price(sell_coin, 'USD')
+    buy_coin_price = get_crypto_price(buy_coin, 'USD')
 
     new_assets = compare_values(sell_coin_price, buy_coin_price,
                                 sell_amount)
