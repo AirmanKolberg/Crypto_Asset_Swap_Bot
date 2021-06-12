@@ -1,3 +1,11 @@
+# Crypto Asset-Swap Bot
+
+This app (under very recent development) will be used to assist you in
+knowing when to exchange one crypto asset for another.  We all like to
+wait around for the next big opportunity to swap, but it's nice to have
+a set of eye around-the-clock for you.
+
+More to come in the near future!
 
 ---
 
