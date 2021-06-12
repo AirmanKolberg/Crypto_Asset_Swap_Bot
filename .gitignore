@@ -1,2 +1,6 @@
 secrets.py
 test.py
+.DS_Store
+__pycache__/
+dist/
+twilio.egg-info/
