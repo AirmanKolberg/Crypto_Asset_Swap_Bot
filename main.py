@@ -1,8 +1,9 @@
 from secrets import *
 from data_retrieval import get_current_time, get_crypto_price
 from time import sleep
-from system_commands import clear_screen
-from twilio import *
+from system_commands import clear_screen, bash_command
+# from twilio import *
+import pyautogui as pag
 
 
 # This function is called from within check_for_updates()
@@ -47,8 +48,26 @@ if __name__ == '__main__':
 
         # If the price is right, notify me
         if potential_rewards >= coin_rewards:
-            text_me(f"Hello, there!\nPotential coin trade of {potential_rewards} right now!")
-            call_me()
+            # text_me(f"Hello, there!\nPotential coin trade of {potential_rewards} right now!")
+            # call_me()
+
+            """
+            This will serve as a test until I can get Twilio
+            back up and running again...
+            """
+
+            bash_command("open -a 'Messages'")
+            sleep(5)
+
+            pag.write(f"Potential coin trade of {potential_rewards} right now!",
+                      interval=0.8)
+            sleep(0.2)
+
+            pag.press('return')
+            sleep(0.2)
+
+            pag.hotkey('command', 'q')
+
             waiting_for_opportunity = False
 
         # Wait a minute and try again
