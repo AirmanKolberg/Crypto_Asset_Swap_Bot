@@ -7,6 +7,23 @@ a set of eye around-the-clock for you.
 
 More to come in the near future!
 
+## Notes for Mac OS 11
+
+To install Twilio, unlike the normal:
+```shell
+pip install twilio
+```
+
+that we all grew to know and love, now, Mac OS X and OS 11 users will
+now have to run:
+
+```shell
+brew tap twilio/brew && brew install twilio
+```
+
+I know.  It's a pain in the ass, but what are you going to do?  Stay tuned
+for more updates...
+
 ---
 
 ### Donations!
