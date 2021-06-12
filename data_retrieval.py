@@ -8,7 +8,7 @@ def get_current_time():
     return datetime.now().strftime('%H:%M:%S')
 
 
-def get_specific_crypto_info(coin, currency):
+def get_crypto_price(coin, currency):
     specific_value = cryptocompare.get_price(coin=coin,
                                              currency=currency,
                                              full=True)['RAW'][coin][currency]['PRICE']
