@@ -46,7 +46,7 @@ if __name__ == '__main__':
                                                        sell_amount)
 
         # Display the current progress on the screen
-        print(f"Potential rewards at {time_now}  -  {potential_rewards}")
+        print(f"{time_now}  -  {potential_rewards}")
 
         # If the price is right, notify me
         if potential_rewards >= coin_rewards:
